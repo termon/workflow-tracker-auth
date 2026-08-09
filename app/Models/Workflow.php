@@ -23,6 +23,11 @@ class Workflow extends Model
         return ['archived_at' => 'datetime'];
     }
 
+    public function isOwnedBy(User $user): bool
+    {
+        return $this->user_id === $user->id;
+    }
+
     /** @param Builder<Workflow> $query
      * @return Builder<Workflow>
      */

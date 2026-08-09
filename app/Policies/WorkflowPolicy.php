@@ -14,7 +14,7 @@ class WorkflowPolicy
 
     public function view(User $user, Workflow $workflow): bool
     {
-        return $workflow->user_id === $user->id;
+        return $workflow->isOwnedBy($user);
     }
 
     public function create(User $user): bool
@@ -24,21 +24,21 @@ class WorkflowPolicy
 
     public function update(User $user, Workflow $workflow): bool
     {
-        return $workflow->user_id === $user->id;
+        return $workflow->isOwnedBy($user);
     }
 
     public function delete(User $user, Workflow $workflow): bool
     {
-        return $workflow->user_id === $user->id;
+        return $workflow->isOwnedBy($user);
     }
 
     public function restore(User $user, Workflow $workflow): bool
     {
-        return $workflow->user_id === $user->id;
+        return $workflow->isOwnedBy($user);
     }
 
     public function forceDelete(User $user, Workflow $workflow): bool
     {
-        return $workflow->user_id === $user->id;
+        return $workflow->isOwnedBy($user);
     }
 }
